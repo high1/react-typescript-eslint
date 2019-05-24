@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      // {
+      //   "type": "chrome",
+      //   "request": "launch",
+      //   "runtimeExecutable": "C:\\Users\\Radomir\\AppData\\Local\\chrlauncher\\bin\\chrome.exe",
+      //   "name": "Chromium",
+      //   "url": "http://localhost:1234",
+      //   "webRoot": "${workspaceFolder}/src"
+      // },
+      {
+        "type": "firefox",
+        "request": "launch",
+        "name": "Firefox",
+        "firefoxExecutable": "/usr/lib/firefox-nightly/firefox",
+        "url": "http://localhost:8080",
+        "sourceMaps": "client",
+       "webRoot": "${workspaceFolder}"
+      }
+    ]
+  }
