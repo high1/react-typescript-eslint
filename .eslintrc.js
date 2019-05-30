@@ -17,6 +17,15 @@ module.exports = {
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    'import/no-extraneous-dependencies': ["error", {
+      devDependencies:
+      [
+        "**/__tests__/**",
+        "jest.config.js", // jest config
+        "webpack.config.ts", // webpack config
+        "setupTests.ts" // enzyme config
+      ],
+    }],
   },
   settings: {
     'import/resolver': {
@@ -25,5 +34,6 @@ module.exports = {
   },
   env: {
     browser: true,
+    jest: true,
   }
 };

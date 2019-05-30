@@ -2,6 +2,11 @@ html, body, #root {
   height: 100%;
 }
 
+body {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 2em;
+}
+
 .container {
   background-color: black;
   height: 250px;
@@ -12,8 +17,8 @@ html, body, #root {
 
 .logo {
   margin-top: 1em;
-  animation: rotation 4s infinite linear;
-  flex: 5;
+  animation: rotation 10s infinite linear;
+  flex: 4;
   fill: #61dafb;
 }
 
@@ -22,8 +27,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   margin-top: 1em;
-  font-size: 1.5em;
-  flex: 1;
+  flex: 2;
 }
 
 @keyframes rotation {

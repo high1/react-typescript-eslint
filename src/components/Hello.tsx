@@ -13,7 +13,7 @@ const Hello = (): React.ReactElement<{}> => (
   //   <Logo className={styles.logo} />
   <div className="container">
     <Logo className="logo" />
-    <div className="text">Welcome to React!</div>
+    <div className="text">Welcome to React</div>
   </div>
 );
 
