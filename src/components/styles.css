@@ -1,13 +1,12 @@
-html, body, #root {
-  height: 100%;
-}
 
 body {
+  height: 100%;
+  width: 100;
   font-family: Roboto, Arial, sans-serif;
   font-size: 2em;
 }
 
-.container {
+#root {
   background-color: black;
   height: 250px;
   display: flex;

@@ -1,4 +1,4 @@
-import * as webpack from "webpack";
+import webpack from "webpack";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserWebackPlugin from "terser-webpack-plugin";
