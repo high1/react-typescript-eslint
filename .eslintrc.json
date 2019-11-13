@@ -26,6 +26,8 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    // prop-types validation disabled because of TypeScript
+    "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   },
