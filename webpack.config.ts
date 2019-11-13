@@ -1,11 +1,13 @@
-import webpack from "webpack";
-import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+import { Configuration } from "webpack";
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserWebackPlugin from "terser-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ForkTsCheckerNotifierWebpackPlugin from "fork-ts-checker-notifier-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
-const config: webpack.Configuration = {
+const config: Configuration = {
   mode: "development",
   devtool: "inline-source-map",
   resolve: {
@@ -16,10 +18,10 @@ const config: webpack.Configuration = {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
         loaders: [
           {
-            loader: MiniCssExtractPlugin.loader as string,
+            loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: process.env.NODE_ENV === "development"
             }
@@ -27,7 +29,7 @@ const config: webpack.Configuration = {
           {
             loader: "css-loader",
             options: {
-              modules: false
+              modules: true
             }
           }
         ]
@@ -61,10 +63,11 @@ const config: webpack.Configuration = {
       template: "./src/index.html"
     }),
     new MiniCssExtractPlugin(),
-    new ForkTsCheckerWebpackPlugin()
+    new ForkTsCheckerWebpackPlugin(),
+    new ForkTsCheckerNotifierWebpackPlugin()
   ],
   optimization: {
-    minimizer: [new TerserWebackPlugin()]
+    minimizer: [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()]
   }
 };
 

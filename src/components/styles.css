@@ -1,18 +1,4 @@
 
-body {
-  margin: 0;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 2em;
-}
-
-#root {
-  background-color: black;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .logo {
   margin-top: 1em;
   animation: rotation 10s infinite linear;

@@ -1,14 +1,11 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import Logo from "assets/react-logo.svg";
-// import styles from "components/styles.css";
-import "components/styles.css";
+import styles from "components/styles.css";
 
-const Hello = ({ title }: { title: string }): React.ReactElement<{}> => (
-  // <div className={styles.container}>
-  //   <Logo className={styles.logo} />
+const Hello = ({ title }: { title: string }): ReactElement<{}> => (
   <>
-    <Logo className="logo" />
-    <div className="text">{title}</div>
+    <Logo className={styles.logo} />
+    <div className={styles.text}>{title}</div>
   </>
 );
 

@@ -1,34 +1,38 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
+    // "airbnb-typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
     "prettier/@typescript-eslint",
     "prettier/react",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "impliedStrict": true,
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies":
-      [
-        "**/__tests__/**",
-        "jest.config.js",
-        "webpack.config.ts",
-        "setupTests.ts"
-      ]
-    }]
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "import/resolver": {
-      "webpack": {}
+      "node": {},
+      "typescript": {}
     }
   },
   "env": {
