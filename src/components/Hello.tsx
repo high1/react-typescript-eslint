@@ -4,7 +4,7 @@ import styles from "components/styles.css";
 
 const Hello: FunctionComponent<{ title: string }> = ({ title }) => (
   <>
-    <Logo className={styles.logo} />
+    <Logo className={styles.logo} data-testid="svg" />
     <div className={styles.text}>{title}</div>
   </>
 );

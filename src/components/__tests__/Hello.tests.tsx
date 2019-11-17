@@ -3,8 +3,9 @@ import { render } from "@testing-library/react";
 
 import Hello from "components/Hello";
 
-test("Hello should exist", (): void => {
+test("Text and svg should exist", (): void => {
   const testMessage = "Test Message";
-  const { getByText } = render(<Hello title={testMessage} />);
+  const { getByText, getByTestId } = render(<Hello title={testMessage} />);
   expect(getByText(testMessage)).toBeInTheDocument();
+  expect(getByTestId("svg")).toBeInTheDocument();
 });
