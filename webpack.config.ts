@@ -7,9 +7,12 @@ import ForkTsCheckerNotifierWebpackPlugin from "fork-ts-checker-notifier-webpack
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
-const config: Configuration = {
-  mode: "development",
-  devtool: "inline-source-map",
+const config = (
+  _env: unknown,
+  { mode = "none" }: Configuration
+): Configuration => ({
+  mode,
+  devtool: mode === "development" ? "inline-source-map" : false,
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     plugins: [new TsconfigPathsPlugin({})]
@@ -18,12 +21,12 @@ const config: Configuration = {
     rules: [
       {
         test: /\.css$/,
-        exclude: [/node_modules/],
+        exclude: /node_modules/,
         loaders: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === "development"
+              hmr: mode === "development"
             }
           },
           {
@@ -44,7 +47,7 @@ const config: Configuration = {
         exclude: /node_modules/,
         loader: "ts-loader",
         options: {
-          transpileOnly: true
+          transpileOnly: mode === "development"
         }
       },
       {
@@ -60,15 +63,23 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: "src/index.html"
     }),
     new MiniCssExtractPlugin(),
-    new ForkTsCheckerWebpackPlugin(),
-    new ForkTsCheckerNotifierWebpackPlugin()
+    ...(mode === "development"
+      ? [
+          new ForkTsCheckerWebpackPlugin(),
+          new ForkTsCheckerNotifierWebpackPlugin()
+        ]
+      : [])
   ],
   optimization: {
-    minimizer: [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()]
+    minimizer: [
+      ...(mode === "development"
+        ? []
+        : [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()])
+    ]
   }
-};
+});
 
 export default config;
