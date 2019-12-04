@@ -1,7 +1,7 @@
 
 .logo {
   margin-top: 1em;
-  animation: rotation 10s infinite linear;
+  animation: rotation 10s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
   flex: 4;
   fill: #61dafb;
 }
@@ -15,10 +15,7 @@
 }
 
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+  0%   {transform: rotate(720deg);}
+  50%  {transform: rotate(0deg);}
+  100% {transform: rotate(720deg);}
 }

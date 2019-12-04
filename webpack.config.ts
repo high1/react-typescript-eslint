@@ -69,7 +69,7 @@ const config = (
     ...(mode === "development"
       ? [
           new ForkTsCheckerWebpackPlugin(),
-          new ForkTsCheckerNotifierWebpackPlugin()
+          new ForkTsCheckerNotifierWebpackPlugin({ title: "React-Typescript" })
         ]
       : [])
   ],
