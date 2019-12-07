@@ -1,21 +1,18 @@
 
 .logo {
-  margin-top: 1em;
-  animation: rotation 10s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
-  flex: 4;
+  margin-top: 0.5em;
+  animation: rotation 10s infinite cubic-bezier(0.5, 0, 0.5, 1);
   fill: #61dafb;
 }
 
 .text {
   color: white;
-  display: flex;
   align-items: center;
-  margin-top: 1em;
-  flex: 2;
+  margin: 0.5em 0;
 }
 
 @keyframes rotation {
-  0%   {transform: rotate(720deg);}
+  0%   {transform: rotate(-360deg);}
   50%  {transform: rotate(0deg);}
-  100% {transform: rotate(720deg);}
+  100% {transform: rotate(-360deg);}
 }

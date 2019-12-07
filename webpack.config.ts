@@ -22,7 +22,7 @@ const config = (
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loaders: [
+        use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
