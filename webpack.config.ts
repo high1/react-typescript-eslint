@@ -3,7 +3,6 @@ import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserWebackPlugin from "terser-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import ForkTsCheckerNotifierWebpackPlugin from "fork-ts-checker-notifier-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
@@ -68,8 +67,10 @@ const config = (
     new MiniCssExtractPlugin(),
     ...(mode === "development"
       ? [
-          new ForkTsCheckerWebpackPlugin(),
-          new ForkTsCheckerNotifierWebpackPlugin({ title: "React-Typescript" })
+          new ForkTsCheckerWebpackPlugin({
+            reportFiles: ["@(src|webpack)/**/*.{ts,tsx}"]
+          })
+          // new ForkTsCheckerNotifierWebpackPlugin({ title: "React-Typescript" })
         ]
       : [])
   ],

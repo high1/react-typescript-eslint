@@ -11,6 +11,7 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "plugin:jest-dom/recommended",
     "prettier/@typescript-eslint",
     "prettier/react",
     "plugin:prettier/recommended"
