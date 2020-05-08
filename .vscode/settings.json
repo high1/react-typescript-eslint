@@ -3,10 +3,10 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   ],
   "editor.rulers": [
-    80
+    100
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

@@ -14,7 +14,7 @@ const config = (
   devtool: mode === "development" ? "inline-source-map" : false,
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
-    plugins: [new TsconfigPathsPlugin({})]
+    plugins: [new TsconfigPathsPlugin({})],
   },
   module: {
     rules: [
@@ -25,29 +25,29 @@ const config = (
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: mode === "development"
-            }
+              hmr: mode === "development",
+            },
           },
           {
             loader: "css-loader",
             options: {
-              modules: true
-            }
-          }
-        ]
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
         exclude: /node_modules/,
-        loader: "@svgr/webpack"
+        loader: "@svgr/webpack",
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
         options: {
-          transpileOnly: mode === "development"
-        }
+          transpileOnly: mode === "development",
+        },
       },
       {
         enforce: "pre",
@@ -55,32 +55,25 @@ const config = (
         exclude: /node_modules/,
         loader: "eslint-loader",
         options: {
-          emitError: true
-        }
-      }
-    ]
+          emitError: true,
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html"
+      template: "src/index.html",
     }),
     new MiniCssExtractPlugin(),
-    ...(mode === "development"
-      ? [
-          new ForkTsCheckerWebpackPlugin({
-            reportFiles: ["@(src|webpack)/**/*.{ts,tsx}"]
-          })
-          // new ForkTsCheckerNotifierWebpackPlugin({ title: "React-Typescript" })
-        ]
-      : [])
+    ...(mode === "development" ? [new ForkTsCheckerWebpackPlugin()] : []),
   ],
   optimization: {
     minimizer: [
       ...(mode === "development"
         ? []
-        : [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()])
-    ]
-  }
+        : [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()]),
+    ],
+  },
 });
 
 export default config;
