@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "coverage": "jest --coverage && opener ./coverage/lcov-report/index.html",
-    "dev": "webpack-dev-server --hot --port 3000 --open --mode development",
+    "coverage": "jest --coverage",
+    "dev": "webpack-dev-server --hot --port 3000 --mode development",
+    "open:coverage": "npm run coverage && open-cli ./coverage/lcov-report/index.html",
     "start": "npm run dev --open",
     "test": "jest"
   },
@@ -51,7 +52,7 @@
     "jest": "^26.0.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "mini-css-extract-plugin": "^0.9.0",
-    "opener": "^1.5.1",
+    "open-cli": "^6.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^2.0.5",
     "terser-webpack-plugin": "^3.0.1",
