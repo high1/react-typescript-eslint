@@ -1,19 +1,16 @@
-import { Configuration } from "webpack";
-import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import TerserWebackPlugin from "terser-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import { Configuration } from 'webpack';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserWebackPlugin from 'terser-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
-const config = (
-  _env: unknown,
-  { mode = "none" }: Configuration
-): Configuration => ({
+const config = (_env: unknown, { mode = 'none' }: Configuration): Configuration => ({
   mode,
-  devtool: mode === "development" ? "inline-source-map" : false,
+  devtool: mode === 'development' ? 'inline-source-map' : false,
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     plugins: [new TsconfigPathsPlugin({})],
   },
   module: {
@@ -25,11 +22,11 @@ const config = (
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: mode === "development",
+              hmr: mode === 'development',
             },
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
             },
@@ -39,21 +36,21 @@ const config = (
       {
         test: /\.svg$/,
         exclude: /node_modules/,
-        loader: "@svgr/webpack",
+        loader: '@svgr/webpack',
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
         options: {
-          transpileOnly: mode === "development",
+          transpileOnly: mode === 'development',
         },
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader',
         options: {
           emitError: true,
         },
@@ -62,16 +59,14 @@ const config = (
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: 'src/index.html',
     }),
     new MiniCssExtractPlugin(),
-    ...(mode === "development" ? [new ForkTsCheckerWebpackPlugin()] : []),
+    ...(mode === 'development' ? [new ForkTsCheckerWebpackPlugin()] : []),
   ],
   optimization: {
     minimizer: [
-      ...(mode === "development"
-        ? []
-        : [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()]),
+      ...(mode === 'development' ? [] : [new TerserWebackPlugin(), new OptimizeCSSAssetsPlugin()]),
     ],
   },
 });

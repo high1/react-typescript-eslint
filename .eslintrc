@@ -6,16 +6,20 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:testing-library/recommended",
+    "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
     "prettier/@typescript-eslint",
-    "prettier/react",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
-  "plugins": ["react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -26,10 +30,9 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    // prop-types validation disabled because of TypeScript
-    "react/prop-types": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    // eslint plugin can not infer typings from TypeScript definitions
+    // https://github.com/yannickcr/eslint-plugin-react/issues/2353
+    "react/prop-types": 0
   },
   "settings": {
     "react": {
